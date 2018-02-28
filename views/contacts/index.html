@@ -1,0 +1,22 @@
+<h3>Contact us:</h3>
+<form id="contact_form" action="" method="post">
+    <input type="text" class="form-control" name="name" placeholder="Your Name" /><br/>
+    <input type="text" class="form-control" name="email" placeholder="Your Email" /><br/>
+    <textarea name="message" class="form-control" placeholder="Your Message"></textarea><br/>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Send</button>
+</form>
+
+<script type="text/javascript" src="/js/admin.js"></script>
+
+<script>
+    $("#contact_form").submit(function(event) {
+        event.preventDefault();
+
+        $.post("/contacts/", $("#contact_form").serialize())
+                .done(function(data) {
+                    $('#contact_form').replaceWith(data);
+                });
+
+
+    });
+</script>
